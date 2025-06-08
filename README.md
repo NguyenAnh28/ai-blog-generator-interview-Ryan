@@ -39,17 +39,26 @@ source venv/bin/activate  # On Windows use: venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-4. Create a `.env` file in the project root:
+4. Set up environment variables:
 
-```bash
-touch .env
-```
+   - Copy the example environment file:
 
-5. Add your OpenAI API key to `.env` (optional):
+   ```bash
+   cp env.example .env
+   ```
 
-```
-OPENAI_API_KEY=your_api_key_here
-```
+   - Edit `.env` and update the values as needed:
+
+   ```
+   # Required for OpenAI integration (optional)
+   OPENAI_API_KEY=your_api_key_here
+
+   # Optional configurations
+   FLASK_ENV=development
+   ENABLE_SCHEDULER=True
+   ```
+
+   See `env.example` for all available configuration options.
 
 ## Usage
 
@@ -103,6 +112,7 @@ ai-blog-generator-interview-Ryan/
 ├── ai_generator.py             # AI content generation module
 ├── seo_fetcher.py             # SEO metrics module
 ├── requirements.txt           # Python dependencies
+├── env.example               # Example environment variables
 ├── .env                      # Environment variables (create this)
 ├── .gitignore               # Git ignore rules
 ├── README.md                # This file
@@ -114,7 +124,7 @@ ai-blog-generator-interview-Ryan/
 
 - The SEO metrics in `seo_fetcher.py` are currently mocked. Replace with real API calls if needed.
 - The AI generation will use OpenAI if an API key is provided, otherwise falls back to mock data.
-- The scheduler runs daily at midnight - adjust the schedule in `app.py` if needed.
+- The scheduler runs daily at midnight - adjust the schedule in `app.py` or via environment variables.
 
 ## Error Handling
 
